@@ -153,10 +153,14 @@ function prevImg() {
     }
 
     //if at start of the arry setDetailsFromThumb(arry[arry.len - 1])
-    if (arryindex > 0) {return arry[arryindex - 1];}
+    if (arryindex > 0) {
+        return arry[arryindex - 1];
+    }
 
     //else setDetailsFromThumb(arry[i-1])
-    else { return arry[arry.length - 1]}
+    else {
+        return arry[arry.length - 1]
+    }
 }
 
 initializeEvents();
