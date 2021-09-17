@@ -4,8 +4,8 @@ var THUMBNAIL_LINK_SELECTOR = '[data-image-role="trigger"]';
 var HIDDEN_DETAIL_CLASS = 'hidden-detail';
 var DETAIL_FRAME_SELECTOR = '[data-image-role="frame"]';
 var TINY_EFFECT_CLASS = 'is-tiny';
-var PREVIOUS_BUTTON_SELECTOR = '[data-button-role="back"]'
-var NEXT_BUTTON_SELECTOR = '[data-button-role="forward"]'
+var PREVIOUS_BUTTON_SELECTOR = '[data-button-role="back"]';
+var NEXT_BUTTON_SELECTOR = '[data-button-role="forward"]';
 
 const ESC_KEY = 27;
 
@@ -16,7 +16,7 @@ function setDetails(imageUrl, titleText) {
     detailImage.setAttribute('src', imageUrl);
 
     var detailTitle = document.querySelector(DETAIL_TITLE_SELECTOR);
-    detailTitle.textContent = titleText
+    detailTitle.textContent = titleText;
 }
 
 function imageFromThumb(thumbnail) {
@@ -39,7 +39,7 @@ function addThumbClickHandler(thumb) {
         event.preventDefault();
         setDetailsFromThumb(thumb);
         showDetails();
-    })
+    });
 
 }
 
@@ -57,12 +57,12 @@ function hideDetails() {
 
 function showDetails() {
     'use strict';
-    var frame = document.querySelector(DETAIL_FRAME_SELECTOR)
+    var frame = document.querySelector(DETAIL_FRAME_SELECTOR);
     document.body.classList.remove(HIDDEN_DETAIL_CLASS);
 
     frame.classList.add(TINY_EFFECT_CLASS);
     setTimeout(function () {
-        frame.classList.remove(TINY_EFFECT_CLASS)
+        frame.classList.remove(TINY_EFFECT_CLASS);
     }, 50);
 }
 
@@ -142,7 +142,7 @@ function prevImg() {
 
     //else setDetailsFromThumb(arry[i-1])
     else {
-        return arry[arry.length - 1]
+        return arry[arry.length - 1];
     }
 }
 
