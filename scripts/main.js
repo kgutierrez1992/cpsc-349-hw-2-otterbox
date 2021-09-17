@@ -95,18 +95,8 @@ function backClickEvent() {
     });
 }
 
-function initializeEvents() {
+function getPosOfDetail() {
     'use strict';
-    var thumbnails = getThumbnailsArray();
-    thumbnails.forEach(addThumbClickHandler);
-    addKeyPressHandler();
-    forwardClickEvent();
-    backClickEvent();
-}
-
-function nextImg() {
-    'use strict';
-
     //Get the array
     var arry = getThumbnailsArray();
     //get current image link
@@ -122,6 +112,14 @@ function nextImg() {
             arryindex++;
         }
     }
+
+    return arryindex;
+}
+
+function nextImg() {
+    'use strict';
+    var arry = getThumbnailsArray();
+    var arryindex = getPosOfDetail();
     //if not at end. set picture to next element 
     if (arryindex < arry.length - 1) {
         return arry[arryindex + 1];
@@ -135,23 +133,8 @@ function nextImg() {
 
 function prevImg() {
     'use strict';
-
-    //Get the array
     var arry = getThumbnailsArray();
-    //get current image link
-    var detailImage = document.querySelector(DETAIL_IMAGE_SELECTOR);
-    var detailImageLink = detailImage.getAttribute('src');
-
-    //find current image in arry
-    var arryindex = 0;
-    while (arryindex < arry.length) {
-        if (detailImageLink === imageFromThumb(arry[arryindex])) {
-            break;
-        } else {
-            arryindex++;
-        }
-    }
-
+    var arryindex = getPosOfDetail();
     //if at start of the arry setDetailsFromThumb(arry[arry.len - 1])
     if (arryindex > 0) {
         return arry[arryindex - 1];
@@ -161,6 +144,15 @@ function prevImg() {
     else {
         return arry[arry.length - 1]
     }
+}
+
+function initializeEvents() {
+    'use strict';
+    var thumbnails = getThumbnailsArray();
+    thumbnails.forEach(addThumbClickHandler);
+    addKeyPressHandler();
+    forwardClickEvent();
+    backClickEvent();
 }
 
 initializeEvents();
